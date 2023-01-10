@@ -25,6 +25,7 @@ defmodule Chauffeur.MixProject do
     [
       {:scenic, "~> 0.11.0"},
       {:scenic_driver_local, "~> 0.11.0"},
+      {:scenic_live_reload, "~> 0.3", only: :dev},
       {:math, "~> 0.3.0"}
     ]
   end

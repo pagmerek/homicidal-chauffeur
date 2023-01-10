@@ -20,6 +20,16 @@ config :chauffeur, :viewport,
     ]
   ]
 
+case Mix.env() do
+  :dev ->
+    config :exsync,
+      reload_timeout: 150,
+      reload_callback: {ScenicLiveReload, :reload_current_scenes, []}
+
+  _ ->
+    nil
+end
+
 # It is also possible to import configuration files, relative to this
 # directory. For example, you can emulate configuration per environment
 # by uncommenting the line below and defining dev.exs, test.exs and such.
