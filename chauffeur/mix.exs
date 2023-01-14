@@ -12,7 +12,6 @@ defmodule Chauffeur.MixProject do
     ]
   end
 
-  # Run "mix help compile.app" to learn about applications.
   def application do
     [
       mod: {Chauffeur, []},
@@ -20,12 +19,14 @@ defmodule Chauffeur.MixProject do
     ]
   end
 
-  # Run "mix help deps" to learn about dependencies.
   defp deps do
     [
+      # Scenic deps
       {:scenic, "~> 0.11.0"},
       {:scenic_driver_local, "~> 0.11.0"},
-      {:scenic_live_reload, "~> 0.3", only: :dev},
+
+      # Math deps
+      {:nx, "~> 0.2"},
       {:math, "~> 0.3.0"}
     ]
   end

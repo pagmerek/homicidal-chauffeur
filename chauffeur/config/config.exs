@@ -8,9 +8,10 @@ config :scenic, :assets, module: Chauffeur.Assets
 # Configure the main viewport for the Scenic application
 config :chauffeur, :viewport,
   name: :main_viewport,
-  size: {800, 600},
-  theme: :success,
+  size: {1000, 1000},
+  theme: :light,
   default_scene: Chauffeur.Scene.Environment,
+  #input_filter: :all,
   drivers: [
     [
       module: Scenic.Driver.Local,
@@ -20,15 +21,7 @@ config :chauffeur, :viewport,
     ]
   ]
 
-case Mix.env() do
-  :dev ->
-    config :exsync,
-      reload_timeout: 150,
-      reload_callback: {ScenicLiveReload, :reload_current_scenes, []}
 
-  _ ->
-    nil
-end
 
 # It is also possible to import configuration files, relative to this
 # directory. For example, you can emulate configuration per environment

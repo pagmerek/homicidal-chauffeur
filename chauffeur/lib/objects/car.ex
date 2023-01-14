@@ -6,28 +6,24 @@ defmodule Chauffeur.Objects.Car do
   alias Chauffeur.Math.Vector2
 
   def move(state) do
-    {:ok, object_map} = fetch(state, :objects)
-    car = object_map.car
-    new_pos = Vector2.add(car.coords, car.velocity)
-    rotated = Vector2.rotate({10, 0}, car.angle)
-    new_coords = Vector2.add(rotated, new_pos)
-    object_map = %{object_map | car: %{car | coords: new_coords}}
+    with {:ok, object_map} <- fetch(state, :objects),
+         {:ok, {width, height}} <- fetch(state, :scene_size) do
+      car = object_map.car
+      change = Vector2.rotate(car.velocity, car.angle, car.turning_radius)
+      new_coords = Vector2.add(change, car.coords)
+      history = [new_coords | car.history]
+      object_map = %{object_map | car: %{car | coords: new_coords, history: history}}
 
-    state
-    |> assign(objects: object_map)
+      state
+      |> assign(objects: object_map)
+    end
   end
 
-  def update_rotation(state, action) do
+  def update_rotation(state, rotation) do
     {:ok, object_map} = fetch(state, :objects)
-    rotation = action?(action)
+    car = %{object_map.car | angle: object_map.car.angle + rotation}
 
     state
-    |> assign(
-      objects: %{object_map | car: %{object_map.car | angle: object_map.car.angle + rotation}}
-    )
+    |> assign(objects: %{object_map | car: car})
   end
-
-  defp action?(0), do: 0
-  defp action?(1), do: -20
-  defp action?(2), do: 20
 end
