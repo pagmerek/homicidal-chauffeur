@@ -14,7 +14,7 @@ defmodule Chauffeur.MixProject do
 
   def application do
     [
-      mod: {Chauffeur, []},
+      mod: {Chauffeur.Application, []},
       extra_applications: [:crypto]
     ]
   end
@@ -26,8 +26,11 @@ defmodule Chauffeur.MixProject do
       {:scenic_driver_local, "~> 0.11.0"},
 
       # Math deps
-      {:nx, "~> 0.2"},
-      {:math, "~> 0.3.0"}
+      {:math, "~> 0.3.0"},
+
+      # Python deps
+      {:erlport, "~> 0.10.1"},
+      {:poolboy, "~> 1.5"}
     ]
   end
 end

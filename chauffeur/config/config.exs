@@ -11,7 +11,7 @@ config :chauffeur, :viewport,
   size: {1000, 1000},
   theme: :light,
   default_scene: Chauffeur.Scene.Environment,
-  #input_filter: :all,
+  # input_filter: :all,
   drivers: [
     [
       module: Scenic.Driver.Local,
@@ -20,8 +20,6 @@ config :chauffeur, :viewport,
       on_close: :stop_system
     ]
   ]
-
-
 
 # It is also possible to import configuration files, relative to this
 # directory. For example, you can emulate configuration per environment
