@@ -1,1 +1,0 @@
-scene_readme.txt

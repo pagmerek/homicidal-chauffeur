@@ -96,7 +96,7 @@ defmodule Chauffeur.Scene.Environment do
           g
           |> rect({width, height}, fill: :blue, translate: {x - width / 2, y - height / 2})
         end,
-        rotate: -angle_radians * @car_velocity / @car_turning_radius,
+        rotate: -angle_radians,
         pin: {x, y},
         id: :car
       )

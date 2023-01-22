@@ -26,11 +26,7 @@ defmodule Chauffeur.MixProject do
       {:scenic_driver_local, "~> 0.11.0"},
 
       # Math deps
-      {:math, "~> 0.3.0"},
-
-      # Python deps
-      {:erlport, "~> 0.10.1"},
-      {:poolboy, "~> 1.5"}
+      {:math, "~> 0.3.0"}
     ]
   end
 end
